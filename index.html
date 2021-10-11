@@ -22,11 +22,154 @@
         <!-- <p class="content__text">Müsait olduğumda burayı dolduracağım.</p> -->
       </div>
     </section>
+    <script src="./js/lib/matter.min.js"></script>
     <script src="./js/lib/partical.js"></script>
     <script src="./js/main.js"></script>
 
     <script>
+      // init();
+
+      const world = document.querySelector(".programming__languages--canvas");
+      const { Engine, Render, Runner, World, Bodies, MouseConstraint, Mouse } =
+        Matter;
+
+      const cat = {
+        static: 0x0001,
+        nodrag: 0x0002,
+        drag: 0x0004,
+      };
+
+      let engine = Engine.create();
+
+      const textures = [
+        "html",
+        "css",
+        "javascript",
+        "node",
+        //   "mongo",
+        "nest",
+        "angular",
+        "vue",
+        "react",
+        "docker",
+        "npm",
+        "git",
+        "babel",
+        "socketio",
+        "puppeteer",
+        "typescript",
+      ];
+      function init() {
+        let width = window.innerWidth;
+        let height = window.innerHeight;
+        let vmin = Math.min(width, height);
+
+        engine.events = {};
+        World.clear(engine.world);
+        Engine.clear(engine);
+        engine = Engine.create();
+
+        let render = Render.create({
+          canvas: world,
+          engine: engine,
+          options: {
+            wireframes: false,
+            background: "transparent",
+            width: width,
+            height: height,
+          },
+        });
+
+        // Mouse control
+        var mouse = Mouse.create(render.canvas);
+        var mouseConstraint = MouseConstraint.create(engine, {
+          mouse: mouse,
+          constraint: {
+            stiffness: 0.2,
+            render: {
+              visible: false,
+            },
+          },
+        });
+
+        // Add mouse
+        World.add(engine.world, mouseConstraint);
+        render.mouse = mouse;
+
+        // Prevent mouse-drag
+        mouseConstraint.collisionFilter.mask = cat.static | cat.drag;
+
+        World.add(engine.world, [
+          Bodies.rectangle(width / 2, height + 50, width, 100, {
+            isStatic: true,
+            render: {
+              fillStyle: "green",
+            },
+          }),
+          Bodies.rectangle(-50, height / 2, 100, height, {
+            isStatic: true,
+          }),
+          Bodies.rectangle(width + 50, height / 2, 100, height, {
+            isStatic: true,
+          }),
+          Bodies.rectangle(width / 2, height / 2 - 20, vmin * 0.5, 0.001, {
+            //mid box
+            isStatic: true,
+            render: {
+              fillStyle: "red",
+            },
+          }),
+        ]);
+
+        function createBall(imageName) {
+          const ORIGINAL_SIZE = 30;
+          const SIZE = Math.floor(Math.random() * 76) + 30;
+          const ball = Bodies.circle(
+            Math.round(Math.random() * width),
+            -30,
+            29,
+            {
+              angle: Math.PI * (Math.random() * 2 - 1),
+              friction: 0.001,
+              frictionAir: 0.01,
+              restitution: 0.8,
+              render: {
+                sprite: {
+                  texture: `./images/languages/${imageName}.png`,
+                  xScale: 0.1,
+                  yScale: 0.1,
+                },
+              },
+            }
+          );
+
+          // setTimeout(() => {
+          //   World.remove(engine.world, ball);
+          // }, 6000);
+
+          return ball;
+        }
+
+        Engine.run(engine);
+
+        Render.run(render);
+        // const handleClick = () => {
+        //   const ball2 = createBall();
+        //   World.add(engine.world, [ball2]);
+        // };
+        // setInterval(handleClick, 500);
+
+        textures.forEach((t) => {
+          const item = createBall(t);
+          World.add(engine.world, [item]);
+        });
+      }
+
       init();
+
+      window.addEventListener("resize", function () {
+        init();
+      });
     </script>
   </body>
 </html>
