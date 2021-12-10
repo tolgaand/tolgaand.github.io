@@ -1,0 +1,24 @@
+{
+  "files": {
+    "main.css": "/tolgaand/tolgaand.github.io/static/css/main.4872c46f.chunk.css",
+    "main.js": "/tolgaand/tolgaand.github.io/static/js/main.f2d66a98.chunk.js",
+    "main.js.map": "/tolgaand/tolgaand.github.io/static/js/main.f2d66a98.chunk.js.map",
+    "runtime-main.js": "/tolgaand/tolgaand.github.io/static/js/runtime-main.8dbce549.js",
+    "runtime-main.js.map": "/tolgaand/tolgaand.github.io/static/js/runtime-main.8dbce549.js.map",
+    "static/js/2.3215ab11.chunk.js": "/tolgaand/tolgaand.github.io/static/js/2.3215ab11.chunk.js",
+    "static/js/2.3215ab11.chunk.js.map": "/tolgaand/tolgaand.github.io/static/js/2.3215ab11.chunk.js.map",
+    "static/js/3.550493bf.chunk.js": "/tolgaand/tolgaand.github.io/static/js/3.550493bf.chunk.js",
+    "static/js/3.550493bf.chunk.js.map": "/tolgaand/tolgaand.github.io/static/js/3.550493bf.chunk.js.map",
+    "index.html": "/tolgaand/tolgaand.github.io/index.html",
+    "static/css/main.4872c46f.chunk.css.map": "/tolgaand/tolgaand.github.io/static/css/main.4872c46f.chunk.css.map",
+    "static/js/2.3215ab11.chunk.js.LICENSE.txt": "/tolgaand/tolgaand.github.io/static/js/2.3215ab11.chunk.js.LICENSE.txt",
+    "static/media/me.c50cc107.png": "/tolgaand/tolgaand.github.io/static/media/me.c50cc107.png",
+    "static/media/ok-hand.a1fd4db3.png": "/tolgaand/tolgaand.github.io/static/media/ok-hand.a1fd4db3.png"
+  },
+  "entrypoints": [
+    "static/js/runtime-main.8dbce549.js",
+    "static/js/2.3215ab11.chunk.js",
+    "static/css/main.4872c46f.chunk.css",
+    "static/js/main.f2d66a98.chunk.js"
+  ]
+}
